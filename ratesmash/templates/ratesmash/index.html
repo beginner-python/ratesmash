@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ratesmash/style.css' %}" />
+</head>
+<body>
+
+    <header>
+        <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
+        <p>
+        <strong>beginner python</strong> による勉強用サイトです！<br>
+        初めての方はhow to playを一読してからご利用ください！
+        </p>
+        <h2>{{ subtitle }}</h2>
+    </header>
+    
+    <hr>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
+            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
+            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+        </ul>
+    </nav>
+    
+    <hr>
+    
+    <div class="room">
+        <table>
+            <thead>
+                <tr>
+                    <th>room</th>
+                    <th>owner</th>
+                    <th>participant</th>
+                    <th>state</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for room in waiting_room %}
+                <tr class="wait">
+                    <td class="wait"><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td class="wait">{{ room.owner.user.first_name }}</td>
+                    <td class="wait"></td>
+                    <td class="wait">waiting</td>
+                </tr>
+            {% endfor %}
+            {% for room in active_room %}
+                <tr class="active">
+                    <td class="active"><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td class="active">{{ room.owner.user.first_name }}</td>
+                    <td>{{ room.participant.user.first_name }}</td>
+                    <td class="active">playing</td>
+                </tr>
+            {% endfor %}
+            {% for room in processing_room %}
+                <tr class="process">
+                    <td class="process"><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td class="process">{{ room.owner.user.first_name }}</td>
+                    <td class="process">{{ room.participant.user.first_name }}</td>
+                    <td class="process">processing</td>
+                </tr>
+            {% endfor %}
+            {% for room in finished_room %}
+                <tr class="finish">
+                    <td class="finish"><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td class="finish">{{ room.owner.user.first_name }}</td>
+                    <td class="finish">{{ room.participant.user.first_name }}</td>
+                    <td class="finish">finished</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <p><a href="#">Topへ</a></p>
+    
+    <hr>
+    
+    <footer>
+        <p>Copyright</p>
+    </footer>
+    
+</body>
+</html>

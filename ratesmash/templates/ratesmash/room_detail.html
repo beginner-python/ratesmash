@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" 
+    href="{% static 'ratesmash/style.css' %}" />
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
+        <p>
+        <strong>beginner python</strong> による勉強用サイトです！<br>
+        初めての方はhow to playを一読してからご利用ください！
+        </p>
+        <h2>{{ subtitle }}</h2>
+    </header>
+    
+    <hr>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
+            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
+            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+        </ul>
+    </nav>
+    
+    <hr>
+    <table>
+        <tr>
+            <th>owner</th>
+            <th>character</th>
+            <th>rate</th>
+            <th>result</th>
+        </tr>
+        <tr>
+            <td>{{ room.owner.user.first_name }}</td>
+            <td>{{ room.owner.main }}</td>
+            <td>{{ room.owner.rate }}</td>
+            <td>
+            {% if resulto == True %}WIN{% endif %}
+            {% if resulto == False %}LOSS{% endif %}
+            </td>
+        </tr>
+    </table>
+    {% if room.state == 'w' %}
+    <table>
+        <tr>
+            <th>owner's comment</th>
+            <th>server</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>{{ room.comment }}</td>
+            <td>{{ room.server }}</td>
+            <td>
+            {% if room.owner == player %}
+            <a href="{% url 'ratesmash:delete_room' room.id %}"><input type="submit" value="delete"><a/>
+            {% endif %}
+            </td>
+        </tr>
+    </table>
+    {% endif %}
+    <p>vs</p>
+    <table>
+        <tr>
+            <th>participant</th>
+            <th>character</th>
+            <th>rate</th>
+            <th>result</th>
+        </tr>
+        <tr>
+            <td>{{ room.participant.user.first_name }}</td>
+            <td>{{ room.participant.main }}</td>
+            <td>{{ room.participant.rate }}</td>
+            <td>
+            {% if resultp == True %}WIN{% endif %}
+            {% if resultp == False %}LOSS{% endif %}
+            </td>
+        </tr>
+        {% if room.state == 'w' %}
+        <tr>
+            <td>
+                <a href="{% url 'ratesmash:join_room' room.id %}"><input type="submit" value="join"><a/>
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+    
+    <p><a href="#">Topへ</a></p>
+    
+    <hr>
+    
+    <footer>
+        <p>Copyright</p>
+    </footer>
+</body>
+</html>

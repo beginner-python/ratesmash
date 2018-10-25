@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" 
+    href="{% static 'ratesmash/style.css' %}" />
+</head>
+<body>
+    <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
+    <h2>{{ subtitle }}</h2>
+    <hr>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
+            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
+            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+        </ul>
+    </nav>
+    
+    <hr>
+    <p>{{ message }}</p>
+    <form action="{% url 'ratesmash:create_room' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="make">
+    </form>
+</body>
+</html>

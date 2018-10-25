@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" 
+    href="{% static 'ratesmash/style.css' %}" />
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
+        <p>
+        <strong>beginner python</strong> による勉強用サイトです！<br>
+        初めての方はhow to playを一読してからご利用ください！
+        </p>
+        <h2>{{ subtitle }}</h2>
+    </header>
+    
+    <hr>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
+            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
+            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+        </ul>
+    </nav>
+    
+    <hr>
+    <table>
+        <tr>
+            <th>handle name</th>
+            <th>character</th>
+            <th>rate</th>
+        </tr>
+    {% for player in players %}
+        <tr>
+            <td><a href="{% url 'ratesmash:player_detail' player.id %}">{{ player.user.first_name }}</a></td>
+            <td class={{ player.main }}>{{ player.main }}</td>
+            <td>{{ player.rate }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    
+    <p><a href="#">Topへ</a></p>
+    
+    <hr>
+    
+    <footer>
+        <p>Copyright</p>
+    </footer>
+    
+</body>
+</html>

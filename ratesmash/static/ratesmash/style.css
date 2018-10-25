@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+header {
+    color: blue;
+    border: 5px solid black;
+}
+
+header h1 {
+    font-family: Verdana, "Arial Black", メイリオ, sans-serif;
+}
+
+header p {
+    background-color: pink;
+}
+
+header h1 a {
+    text-decoration: none;
+}
+
+
+nav li {
+    display: inline;
+    padding: 0 5px;
+}
+
+.room {
+    margin: 0px 100px 50px;
+}
+
+.room table{
+    border-collapse: collapse;
+    width: 500px;
+    table-layout: fixed;
+}
+
+.room table th, td {
+    border: solid 1px;
+    padding: 10px;
+    text-align: center;
+}
+
+.wait {
+    background-color: white;
+}
+
+.active {
+    background-color: orange;
+}
+
+.process {
+    background-color: tomato;
+}
+
+.finish {
+    background-color: gray;
+}
+

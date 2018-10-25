@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>rate smash</title>
+    <link rel="stylesheet" type="text/css" 
+    href="{% static 'ratesmash/style.css' %}" />
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'ratesmash:index' %}">rate smash</a></h1>
+        <p><strong>beginner python</strong> による勉強用サイトです！</p>
+        <h2>how to play</h2>
+    </header>
+    
+    <hr>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
+            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
+            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+        </ul>
+    </nav>
+    
+    <hr>
+    
+    <dl>
+        <dt>rate smashとは？</dt>
+        <dd>rate smashは<strong>beginner python</strong>によるpython言語勉強用サイトです.<br>
+        ネトスマでのレート戦を目的としたウェブアプリケーションです.</dd>
+        <br>
+        <dt>サイトの利用方法</dt>
+        <dd>このサイトを利用するためにはアカウント登録を行う必要があります.<br>
+        現在新規の参加者は募集していませんが, ご興味のある方はtwitterアカウントまでご連絡ください.</dd>
+        <br>
+        <dt>レーティング対戦の流れ</dt>
+        <dd>部屋を立てる場合</dd>
+        <dd>
+            <ol>
+                <li>サイト左上のcreate roomをクリックし, 必要事項を記入し部屋を立てる.</li>
+                <li>部屋に参加者が入室すると, 結果送信画面に遷移します.</li>
+                <li>結果を送信し, お互いの結果が正しい場合, レートの計算が行われます.</li>
+            </ol>
+        </dd>
+        <dd>部屋に参加する場合</dd>
+        <dd>
+            <ol>
+                <li>ホーム画面の部屋一覧のstateが<strong>waiting</strong>の部屋の部屋番号をクリックする.</li>
+                <li>部屋詳細画面に移行し, joinボタンをクリックする.</li>
+                <li>自動的に結果送信画面に移行するので,　結果を送信する.</li>
+            </ol>
+        </dd>
+            <p><a href="#">Topへ</a></p>
+    
+    <hr>
+    
+    <footer>
+        <p>Copyright</p>
+    </footer>
+    
+</body>
+</html>
