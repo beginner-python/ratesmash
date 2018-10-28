@@ -48,13 +48,16 @@
     {% if room.state == 'w' %}
     <table>
         <tr>
+            <th>meeting server</th>
+            <th>counter foctor</th>
             <th>owner's comment</th>
-            <th>server</th>
-            <th></th>
         </tr>
         <tr>
-            <td>{{ room.comment }}</td>
             <td>{{ room.server }}</td>
+            <td>{{ room.cf }}</td>
+            <td>{{ room.comment }}</td>
+        </tr>
+        <tr>
             <td>
             {% if room.owner == player %}
             <a href="{% url 'ratesmash:delete_room' room.id %}"><input type="submit" value="delete"><a/>
@@ -89,7 +92,8 @@
         {% endif %}
     </table>
     
-    <p><a href="#">Topへ</a></p>
+    <p><a href="#">一番上へ</a></p>
+    <p><a href="{% url 'ratesmash:index' %}">Homeへ</a></p>
     
     <hr>
     

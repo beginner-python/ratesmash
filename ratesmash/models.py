@@ -52,6 +52,11 @@ class Room(models.Model):
             ('exo', 'exo_server'),
             )
     server = models.CharField(max_length=10, choices=SERVER_LIST)
+    CF_LIST = (
+            ('1', '1'),
+            ('2', '2'),
+            )
+    cf = models.CharField(max_length=1, choices=CF_LIST)
     def __str__(self):
         return str(self.id)
     

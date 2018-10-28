@@ -8,6 +8,11 @@ class RoomForm(forms.Form):
             ('exo', 'exo_server'),
             )
     server = forms.ChoiceField(choices=SERVER_LIST)
+    CF_LIST = (
+            ('1', '1'),
+            ('2', '2'),
+            )
+    cf = forms.ChoiceField(choices=CF_LIST)
     comment = forms.CharField(max_length=20, required=False)
     
     
