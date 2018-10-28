@@ -8,8 +8,15 @@
     href="{% static 'ratesmash/style.css' %}" />
 </head>
 <body>
-    <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
-    <h2>{{ subtitle }}</h2>
+    <header>
+        <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
+        <p>
+        <strong>beginner python</strong> による勉強用サイトです！<br>
+        初めての方はhow to playを一読してからご利用ください！
+        </p>
+        <h2>{{ subtitle }}</h2>
+    </header>
+    
     <hr>
     
     <nav>
