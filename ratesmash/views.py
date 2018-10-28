@@ -235,19 +235,23 @@ def process_rate(room_id):
                 room.state = 'f'
                 room.save()
                 if winloss1 == True:
-                    player1.rate += int(16 + (rate2 - rate1) * 0.04)
+                    player1.rate += 16 + (rate2 - rate1) * 0.04
+                    player1.rate = int(player1.rate)
                     player1.playable = True
                     player1.save()
                 else:
-                    player1.rate -= int(16 + (rate2 - rate1) * 0.04)
+                    player1.rate -= 16 + (rate2 - rate1) * 0.04
+                    player1.rate = int(player1.rate)
                     player1.playable = True
                     player1.save()
                 if winloss2 == True:
-                    player2.rate += int(16 + (rate1 - rate2) * 0.04)
+                    player2.rate += 16 + (rate1 - rate2) * 0.04
+                    player2.rate = int(player2.rate)
                     player2.playable = True
                     player2.save()
                 else:
-                    player2.rate -= int(16 + (rate1 - rate2) * 0.04)
+                    player2.rate -= 16 + (rate1 - rate2) * 0.04
+                    player2.rate = int(player2.rate)
                     player2.playable = True
                     player2.save()        
         
