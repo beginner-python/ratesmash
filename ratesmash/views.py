@@ -163,11 +163,12 @@ def send_result(request, room_id):
             return HttpResponseRedirect('/ratesmash/')
     else:
         form = ResultForm()
+    room = Room.objects.get(id=room_id)
     context = {
             'title':'rate smash',
             'subtitle':'send result',
             'message':'choose win/loss',
-            'room_id':room_id,
+            'room':room,
             'form':form
             }
     return render(request, 'ratesmash/send_result.html', context) 

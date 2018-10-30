@@ -28,8 +28,25 @@
     </nav>
     
     <hr>
+    
+    <div>
+        <p>game information</p>
+        <table>
+        <tr>
+            <th>meeting server</th>
+            <th>counter foctor</th>
+            <th>owner's comment</th>
+        </tr>
+        <tr>
+            <td>{{ room.server }}</td>
+            <td>{{ room.cf }}</td>
+            <td>{{ room.comment }}</td>
+        </tr>
+    </table>
+    </div>
+    
     <p>{{ message }}</p>
-    <form action="{% url 'ratesmash:send_result' room_id %}" method="post">
+    <form action="{% url 'ratesmash:send_result' room.id %}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="send">
