@@ -55,3 +55,10 @@ nav li {
     background-color: gray;
 }
 
+.player {
+    margin: 0px 100px 50px;
+}
+
+.result {
+    margin: 0px 100px 50px;
+}

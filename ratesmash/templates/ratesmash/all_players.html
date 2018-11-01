@@ -28,20 +28,23 @@
     </nav>
     
     <hr>
-    <table>
-        <tr>
-            <th>handle name</th>
-            <th>character</th>
-            <th>rate</th>
-        </tr>
-    {% for player in players %}
-        <tr>
-            <td><a href="{% url 'ratesmash:player_detail' player.id %}">{{ player.user.first_name }}</a></td>
-            <td class={{ player.main }}>{{ player.main }}</td>
-            <td>{{ player.rate }}</td>
-        </tr>
-    {% endfor %}
-    </table>
+    
+    <div class="player">
+        <table>
+            <tr>
+                <th>handle name</th>
+                <th>character</th>
+                <th>rate</th>
+            </tr>
+        {% for player in players %}
+            <tr>
+                <td><a href="{% url 'ratesmash:player_detail' player.id %}">{{ player.user.first_name }}</a></td>
+                <td class={{ player.main }}>{{ player.main }}</td>
+                <td>{{ player.rate }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
     
     <p><a href="#">一番上へ</a></p>
     <p><a href="{% url 'ratesmash:index' %}">Homeへ</a></p>

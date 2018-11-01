@@ -28,38 +28,44 @@
     </nav>
     
     <hr>
-    <table>
-        <tr>
-            <th>handle name</th>
-            <th>character</th>
-            <th>rate</th>
-        </tr>
-        <tr>
-            <td>{{ player.user.first_name }}</td>
-            <td>{{ player.main }}</td>
-            <td>{{ player.rate }}</td>
-        </tr>
-    </table>
-    <p>game record</p>
-    <table>
-        <tr>
-            <th>result</th>
-            <th>opponent</th>
-            <th>character</th>
-            <th>date</th>
-        </tr>
-        {% for result in results %}
-        <tr>
-            <td>
-            {% if result.winloss == True %}win{% endif %}
-            {% if result.winloss == False %}loss{% endif %}
-            </td>
-            <td>{{ result.player2.user.first_name }}</td>
-            <td>{{ result.player2.main }}</td>
-            <td>{{ result.room.pub_date|date:'F/j/Y' }}</td>
-        </tr>
-        {% endfor %}            
-    </table>
+    
+    <div class="player">
+        <table>
+            <tr>
+                <th>handle name</th>
+                <th>character</th>
+                <th>rate</th>
+            </tr>
+            <tr>
+                <td>{{ player.user.first_name }}</td>
+                <td>{{ player.main }}</td>
+                <td>{{ player.rate }}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="result">
+        <p>game record</p>
+        <table>
+            <tr>
+                <th>result</th>
+                <th>opponent</th>
+                <th>character</th>
+                <th>date</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>
+                {% if result.winloss == True %}win{% endif %}
+                {% if result.winloss == False %}loss{% endif %}
+                </td>
+                <td>{{ result.player2.user.first_name }}</td>
+                <td>{{ result.player2.main }}</td>
+                <td>{{ result.room.pub_date|date:'F/j/Y' }}</td>
+            </tr>
+            {% endfor %}            
+        </table>
+    </div>
     
     <p><a href="#">一番上へ</a></p>
     <p><a href="{% url 'ratesmash:index' %}">Homeへ</a></p>

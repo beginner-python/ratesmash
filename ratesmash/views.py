@@ -54,7 +54,8 @@ def create_room(request):
 
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
-    if request.user.is_authenticated:
+    # ログインしているかどうか
+    if request.user.is_authenticated: # ログインしている場合
         player = Player.objects.get(user=request.user)
         if room.owner == player or room.participant == player:
             if room.state == 'd' or room.state == 'p':
@@ -71,10 +72,10 @@ def room_detail(request, room_id):
                 pass
         else:
             pass
-    else:
+    else: # ログインしていない場合
         pass
     
-    if room.state == 'w' or room.state == 'd':
+    if room.state == 'w' or room.state == 'd' or room.state == 'p':
         context = context = {
                 'title':'rate smash',
                 'subtitle':'room detail',
