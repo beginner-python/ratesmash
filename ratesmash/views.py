@@ -206,7 +206,7 @@ def error_message(request):
     return render(request, 'ratesmash/error_message.html', context)
 
 """
-urlとは結びつけられない関数
+general function
 """
 def process_rate(room_id):
     room = Room.objects.get(id=room_id)
@@ -242,20 +242,18 @@ def process_rate(room_id):
                     player1.rate = int(player1.rate)
                     player1.playable = True
                     player1.save()
+                    player2.rate -= 16 + (rate2 - rate1) * 0.04
+                    player2.rate = int(player2.rate)
+                    player2.playable = True
+                    player2.save()
                 else:
                     player1.rate -= 16 + (rate1 - rate2) * 0.04
                     player1.rate = int(player1.rate)
                     player1.playable = True
                     player1.save()
-                if winloss2 == True:
-                    player2.rate += 16 + (rate2 - rate1) * 0.04
+                    player2.rate += 16 + (rate1 - rate2) * 0.04
                     player2.rate = int(player2.rate)
                     player2.playable = True
                     player2.save()
-                else:
-                    player2.rate -= 16 + (rate1 - rate2) * 0.04
-                    player2.rate = int(player2.rate)
-                    player2.playable = True
-                    player2.save()        
         
         
