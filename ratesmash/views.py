@@ -230,29 +230,47 @@ def process_rate(room_id):
             if abs(rate1 - rate2) >= 400:
                 room.state = 'f'
                 room.save()
-                player1.playable = True
-                player1.save()
-                player2.playable = True
-                player2.save()
+                if rate1 > rate2:
+                    if winloss1 == True:
+                        player1.playable = True
+                        player1.save()
+                        player2.playable = True
+                        player2.save()
+                    else:
+                        player1.rate -= int(16 + (rate1 - rate2) * 0.04)
+                        player1.playable = True
+                        player1.save()
+                        player2.rate += int(16 + (rate1 - rate2) * 0.04)
+                        player2.playable = True
+                        player2.save()
+                else:
+                    if winloss2 == True:
+                        player1.playable = True
+                        player1.save()
+                        player2.playable = True
+                        player2.save()
+                    else:
+                        player1.rate += int(16 + (rate2 - rate1) * 0.04)
+                        player1.playable = True
+                        player1.save()
+                        player2.rate -= int(16 + (rate2 - rate1) * 0.04)
+                        player2.playable = True
+                        player2.save()
             else:
                 room.state = 'f'
                 room.save()
                 if winloss1 == True:
-                    player1.rate += 16 + (rate2 - rate1) * 0.04
-                    player1.rate = int(player1.rate)
+                    player1.rate += int(16 + (rate2 - rate1) * 0.04)
                     player1.playable = True
                     player1.save()
-                    player2.rate -= 16 + (rate2 - rate1) * 0.04
-                    player2.rate = int(player2.rate)
+                    player2.rate -= int(16 + (rate2 - rate1) * 0.04)
                     player2.playable = True
                     player2.save()
                 else:
-                    player1.rate -= 16 + (rate1 - rate2) * 0.04
-                    player1.rate = int(player1.rate)
+                    player1.rate -= int(16 + (rate1 - rate2) * 0.04)
                     player1.playable = True
                     player1.save()
-                    player2.rate += 16 + (rate1 - rate2) * 0.04
-                    player2.rate = int(player2.rate)
+                    player2.rate += int(16 + (rate1 - rate2) * 0.04)
                     player2.playable = True
                     player2.save()
         
