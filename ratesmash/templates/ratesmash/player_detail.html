@@ -55,7 +55,7 @@
             </tr>
             {% for result in results %}
             <tr>
-                <td>
+                <td class="{{ result.winloss }}">
                 {% if result.winloss == True %}win{% endif %}
                 {% if result.winloss == False %}loss{% endif %}
                 </td>

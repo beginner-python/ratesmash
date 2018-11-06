@@ -140,3 +140,11 @@ header p {
 .result-list th {
     padding: 10px;
 }
+
+.True {
+    color: red;
+}
+
+.False {
+    color: blue;
+}
