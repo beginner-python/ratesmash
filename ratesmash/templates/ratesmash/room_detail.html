@@ -19,34 +19,18 @@
     
     <hr>
     
-    <nav>
-        <ul>
-            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
-            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
-            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+    <nav class="menu">
+        <ul class="menu-bar">
+            <li class="menu-item"><a href="{% url 'ratesmash:create_room' %}">部屋をつくる</a></li>
+            <li class="menu-item"><a href="{% url 'ratesmash:all_players' %}">プレイヤー一覧</a></li>
+            <li class="menu-item"><a href="{% url 'ratesmash:howtoplay' %}">ヘルプ</a></li>
         </ul>
     </nav>
     
     <hr>
-    <table>
-        <tr>
-            <th>owner</th>
-            <th>character</th>
-            <th>rate</th>
-            <th>result</th>
-        </tr>
-        <tr>
-            <td>{{ room.owner.user.first_name }}</td>
-            <td>{{ room.owner.main }}</td>
-            <td>{{ room.owner.rate }}</td>
-            <td>
-            {% if resulto == True %}WIN{% endif %}
-            {% if resulto == False %}LOSS{% endif %}
-            </td>
-        </tr>
-    </table>
+    
     {% if room.state == 'w' %}
-    <table>
+    <table class="room-detail">
         <tr>
             <th>meeting server</th>
             <th>counter foctor</th>
@@ -57,27 +41,53 @@
             <td>{{ room.cf }}</td>
             <td>{{ room.comment }}</td>
         </tr>
-        <tr>
-            <td>
-            {% if room.owner == player %}
-            <a href="{% url 'ratesmash:delete_room' room.id %}"><input type="submit" value="delete"><a/>
-            {% endif %}
-            </td>
-        </tr>
     </table>
     {% endif %}
-    <p>vs</p>
-    <table>
+    
+    <table class="room-owner">
         <tr>
-            <th>participant</th>
-            <th>character</th>
-            <th>rate</th>
-            <th>result</th>
+            <th>owner</th>
+            <td>{{ room.owner.user.first_name }}</td>
         </tr>
         <tr>
+            <th>character</th>
+            <td>{{ room.owner.main }}</td>
+        </tr>
+        <tr>
+            <th>rate</th>
+            <td>{{ room.owner.rate }}</td>
+        </tr>
+        <tr>
+            <th>result</th>
+            <td>
+            {% if resulto == True %}WIN{% endif %}
+            {% if resulto == False %}LOSS{% endif %}
+            </td>
+        </tr>
+        {% if room.owner == player %}
+        <tr>
+            <td><a href="{% url 'ratesmash:delete_room' room.id %}"><input type="submit" value="delete" class="button"><a/></td>
+        </tr>
+        {% endif %}
+    </table>
+    
+    <p>vs</p>
+    
+    <table class="room-participant">
+        <tr>
+            <th>participant</th>
             <td>{{ room.participant.user.first_name }}</td>
+        </tr>
+        <tr>
+            <th>character</th>
             <td>{{ room.participant.main }}</td>
+        </tr>
+        <tr>
+            <th>rate</th>
             <td>{{ room.participant.rate }}</td>
+        </tr>
+        <tr>
+            <th>result</th>
             <td>
             {% if resultp == True %}WIN{% endif %}
             {% if resultp == False %}LOSS{% endif %}
@@ -86,7 +96,7 @@
         {% if room.state == 'w' %}
         <tr>
             <td>
-                <a href="{% url 'ratesmash:join_room' room.id %}"><input type="submit" value="join"><a/>
+                <a href="{% url 'ratesmash:join_room' room.id %}"><input type="submit" value="join" class="button"><a/>
             </td>
         </tr>
         {% endif %}

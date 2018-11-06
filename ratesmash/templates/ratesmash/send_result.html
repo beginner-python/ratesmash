@@ -19,11 +19,11 @@
     
     <hr>
     
-    <nav>
-        <ul>
-            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
-            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
-            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+    <nav class="menu">
+        <ul class="menu-bar">
+            <li class="menu-item"><a href="{% url 'ratesmash:create_room' %}">部屋をつくる</a></li>
+            <li class="menu-item"><a href="{% url 'ratesmash:all_players' %}">プレイヤー一覧</a></li>
+            <li class="menu-item"><a href="{% url 'ratesmash:howtoplay' %}">ヘルプ</a></li>
         </ul>
     </nav>
     
@@ -46,10 +46,15 @@
     </div>
     
     <p>{{ message }}</p>
-    <form action="{% url 'ratesmash:send_result' room.id %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="send">
-    </form>
+    <table>
+        <form action="{% url 'ratesmash:send_result' room.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <tr>
+                <td></td>
+                <td><input type="submit" value="send" class="button"></td>
+            </tr>
+        </form>
+    </table>
 </body>
 </html>

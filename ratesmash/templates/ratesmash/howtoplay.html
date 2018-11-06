@@ -16,11 +16,11 @@
     
     <hr>
     
-    <nav>
-        <ul>
-            <li><a href="{% url 'ratesmash:create_room' %}">create room</a></li>
-            <li><a href="{% url 'ratesmash:all_players' %}">all players</a></li>
-            <li><a href="{% url 'ratesmash:howtoplay' %}">how to play</a></li>
+    <nav class="menu">
+        <ul class="menu-bar">
+            <li class="menu-item"><a href="{% url 'ratesmash:create_room' %}">部屋をつくる</a></li>
+            <li class="menu-item"><a href="{% url 'ratesmash:all_players' %}">プレイヤー一覧</a></li>
+            <li class="menu-item"><a href="{% url 'ratesmash:howtoplay' %}">ヘルプ</a></li>
         </ul>
     </nav>
     
@@ -43,7 +43,7 @@
         <dd>部屋を立てる場合</dd>
         <dd>
             <ol>
-                <li>サイト左上のcreate roomをクリックし, 必要事項を記入し部屋を立てる.</li>
+                <li>サイト左上の「部屋をつくる」をクリックし, 必要事項を記入し部屋を立てる.</li>
                 <li>部屋に参加者が入室すると, 結果送信画面に遷移します.</li>
                 <li>対戦終了後, 結果を送信し, お互いの結果が正しい場合, レートの計算が行われます.</li>
             </ol>
@@ -51,8 +51,8 @@
         <dd>部屋に参加する場合</dd>
         <dd>
             <ol>
-                <li>ホーム画面の部屋一覧のstateが<strong>waiting</strong>の部屋の部屋番号をクリックする.</li>
-                <li>部屋詳細画面に移行し, joinボタンをクリックする.</li>
+                <li>ホーム画面の部屋一覧の「状態」が<strong>待機中</strong>の部屋の部屋番号をクリックする.</li>
+                <li>部屋詳細画面に移行し, 「参加」ボタンをクリックする.</li>
                 <li>自動的に結果送信画面に移行するので,　対戦終了後, 結果を送信する.</li>
             </ol>
         </dd>
@@ -70,7 +70,7 @@
             <ul>
                 <li>部屋立て側は参加者が入室したことはわかりません, ホーム画面を更新し参加者を確認してください.</li>
                 <li>結果送信画面から離れても自分が入室している部屋番号を押せば自動的に結果送信画面に遷移します.</li>
-                <li>お互いが同じ対戦結果を送信した場合, stateがprocessingとなるので, 間違えた方は結果を送りなおしてください.</li>
+                <li>お互いが同じ対戦結果を送信した場合, 「状態」が「処理中」となるので, 間違えた方は結果を送りなおしてください.</li>
             </ul>
         </dd>
     </dl>
