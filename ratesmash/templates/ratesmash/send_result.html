@@ -31,18 +31,18 @@
     
     <div>
         <p>game information</p>
-        <table>
-        <tr>
-            <th>meeting server</th>
-            <th>counter foctor</th>
-            <th>owner's comment</th>
-        </tr>
-        <tr>
-            <td>{{ room.server }}</td>
-            <td>{{ room.cf }}</td>
-            <td>{{ room.comment }}</td>
-        </tr>
-    </table>
+        <table class="room-detail">
+            <tr>
+                <th>集合サーバー</th>
+                <th>counter foctor</th>
+                <th>コメント</th>
+            </tr>
+            <tr>
+                <td>{{ room.server }}</td>
+                <td>{{ room.cf }}</td>
+                <td>{{ room.comment }}</td>
+            </tr>
+        </table>
     </div>
     
     <p>{{ message }}</p>

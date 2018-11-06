@@ -32,9 +32,9 @@
     <div>
         <table class="player-detail">
             <tr>
-                <th>handle name</th>
-                <th>character</th>
-                <th>rate</th>
+                <th>ハンドルネーム</th>
+                <th>キャラクター</th>
+                <th>レート</th>
             </tr>
             <tr>
                 <td>{{ player.user.first_name }}</td>
@@ -45,13 +45,13 @@
     </div>
     
     <div>
-        <p>game record</p>
+        <p>ゲームレコード</p>
         <table class="result-list">
             <tr>
-                <th>result</th>
-                <th>opponent</th>
-                <th>character</th>
-                <th>date</th>
+                <th>対戦結果</th>
+                <th>対戦相手</th>
+                <th>キャラクター</th>
+                <th>日付</th>
             </tr>
             {% for result in results %}
             <tr>

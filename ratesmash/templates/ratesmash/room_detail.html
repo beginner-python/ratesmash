@@ -30,11 +30,12 @@
     <hr>
     
     {% if room.state == 'w' %}
+    <p>game information</p>
     <table class="room-detail">
         <tr>
-            <th>meeting server</th>
+            <th>集合サーバー</th>
             <th>counter foctor</th>
-            <th>owner's comment</th>
+            <th>コメント</th>
         </tr>
         <tr>
             <td>{{ room.server }}</td>
@@ -46,19 +47,19 @@
     
     <table class="room-owner">
         <tr>
-            <th>owner</th>
+            <th>部屋主</th>
             <td>{{ room.owner.user.first_name }}</td>
         </tr>
         <tr>
-            <th>character</th>
+            <th>キャラクター</th>
             <td>{{ room.owner.main }}</td>
         </tr>
         <tr>
-            <th>rate</th>
+            <th>レート</th>
             <td>{{ room.owner.rate }}</td>
         </tr>
         <tr>
-            <th>result</th>
+            <th>対戦結果</th>
             <td>
             {% if resulto == True %}WIN{% endif %}
             {% if resulto == False %}LOSS{% endif %}
@@ -75,19 +76,19 @@
     
     <table class="room-participant">
         <tr>
-            <th>participant</th>
+            <th>対戦相手</th>
             <td>{{ room.participant.user.first_name }}</td>
         </tr>
         <tr>
-            <th>character</th>
+            <th>キャラクター</th>
             <td>{{ room.participant.main }}</td>
         </tr>
         <tr>
-            <th>rate</th>
+            <th>レート</th>
             <td>{{ room.participant.rate }}</td>
         </tr>
         <tr>
-            <th>result</th>
+            <th>対戦結果</th>
             <td>
             {% if resultp == True %}WIN{% endif %}
             {% if resultp == False %}LOSS{% endif %}
@@ -96,7 +97,7 @@
         {% if room.state == 'w' %}
         <tr>
             <td>
-                <a href="{% url 'ratesmash:join_room' room.id %}"><input type="submit" value="join" class="button"><a/>
+                <a href="{% url 'ratesmash:join_room' room.id %}"><input type="submit" value="この部屋に参加" class="button"><a/>
             </td>
         </tr>
         {% endif %}
