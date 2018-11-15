@@ -38,12 +38,21 @@
                 <th>状態</th>
             </tr>
         {% for room in waiting_room %}
+        {% if room.mode == False %}
             <tr>
                 <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
                 <td>{{ room.owner.user.first_name }}</td>
                 <td></td>
                 <td>待機中</td>
             </tr>
+        {% else %}
+            <tr>
+                <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                <td>?</td>
+                <td></td>
+                <td>待機中</td>
+            </tr>
+        {% endif %}
         {% endfor %}
         {% for room in active_room %}
             <tr class="active">

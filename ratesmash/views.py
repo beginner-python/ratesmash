@@ -35,6 +35,7 @@ def create_room(request):
                     comment=request.POST['comment'],
                     server=request.POST['server'],
                     cf=request.POST['cf'],
+                    mode=request.POST['mode'],
                     )
             room.save()
             player.playable = False

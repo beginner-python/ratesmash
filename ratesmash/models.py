@@ -57,6 +57,7 @@ class Room(models.Model):
             ('2', '2'),
             )
     cf = models.CharField(max_length=1, choices=CF_LIST)
+    mode = models.BooleanField()
     def __str__(self):
         return str(self.id)
     

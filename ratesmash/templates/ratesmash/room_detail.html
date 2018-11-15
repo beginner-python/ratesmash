@@ -45,6 +45,8 @@
     </table>
     {% endif %}
     
+    {% if room.state == 'w' %}
+    {% if room.mode == False %}
     <table class="room-owner">
         <tr>
             <th>部屋主</th>
@@ -71,6 +73,64 @@
         </tr>
         {% endif %}
     </table>
+    {% else %}
+    <table class="room-owner">
+        <tr>
+            <th>部屋主</th>
+            <td>?</td>
+        </tr>
+        <tr>
+            <th>キャラクター</th>
+            <td>?</td>
+        </tr>
+        <tr>
+            <th>レート</th>
+            <td>?</td>
+        </tr>
+        <tr>
+            <th>対戦結果</th>
+            <td>
+            {% if resulto == True %}WIN{% endif %}
+            {% if resulto == False %}LOSS{% endif %}
+            </td>
+        </tr>
+        {% if room.owner == player %}
+        <tr>
+            <td><a href="{% url 'ratesmash:delete_room' room.id %}"><input type="submit" value="delete" class="button"><a/></td>
+        </tr>
+        {% endif %}
+    </table>
+    {% endif %}
+    {% endif %}
+    
+    {% if room.state != 'w' %}
+    <table class="room-owner">
+        <tr>
+            <th>部屋主</th>
+            <td>{{ room.owner.user.first_name }}</td>
+        </tr>
+        <tr>
+            <th>キャラクター</th>
+            <td>{{ room.owner.main }}</td>
+        </tr>
+        <tr>
+            <th>レート</th>
+            <td>{{ room.owner.rate }}</td>
+        </tr>
+        <tr>
+            <th>対戦結果</th>
+            <td>
+            {% if resulto == True %}WIN{% endif %}
+            {% if resulto == False %}LOSS{% endif %}
+            </td>
+        </tr>
+        {% if room.owner == player %}
+        <tr>
+            <td><a href="{% url 'ratesmash:delete_room' room.id %}"><input type="submit" value="delete" class="button"><a/></td>
+        </tr>
+        {% endif %}
+    </table>
+    {% endif%}
     
     <p>vs</p>
     

@@ -52,11 +52,6 @@ header p {
     transition: .4s;
     }
     
-.button:hover {
-    padding-left: 0.7em;
-    padding-right: 0.3em;
-}
-
 
 /* テーブルデザイン　*/
 .room-list {

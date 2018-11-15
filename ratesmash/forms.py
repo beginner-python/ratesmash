@@ -13,6 +13,11 @@ class RoomForm(forms.Form):
             ('2', '2'),
             )
     cf = forms.ChoiceField(choices=CF_LIST)
+    MASK_MODE = (
+                (False, '公開'),
+                (True, '匿名')
+                )
+    mode = forms.ChoiceField(choices=MASK_MODE)
     comment = forms.CharField(max_length=20, required=False)
     
     
