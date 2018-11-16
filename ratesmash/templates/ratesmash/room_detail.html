@@ -23,6 +23,7 @@
         <ul class="menu-bar">
             <li class="menu-item"><a href="{% url 'ratesmash:create_room' %}">部屋をつくる</a></li>
             <li class="menu-item"><a href="{% url 'ratesmash:all_players' %}">プレイヤー一覧</a></li>
+            <li class="menu-item"><a href="{% url 'ratesmash:ranking' %}">ランキング</a></li>
             <li class="menu-item"><a href="{% url 'ratesmash:howtoplay' %}">ヘルプ</a></li>
         </ul>
     </nav>
@@ -54,7 +55,31 @@
         </tr>
         <tr>
             <th>キャラクター</th>
-            <td>{{ room.owner.main }}</td>
+            {% if  room.owner.main == 'MA' %}
+            <td><img src="{% static 'ratesmash/images/MA.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif  room.owner.main == 'DK' %}
+            <td><img src="{% static 'ratesmash/images/DK.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'LI' %}
+            <td><img src="{% static 'ratesmash/images/LI.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'SA' %}
+            <td><img src="{% static 'ratesmash/images/SA.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'YO' %}
+            <td><img src="{% static 'ratesmash/images/YO.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'KI' %}
+            <td><img src="{% static 'ratesmash/images/KI.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'FO' %}
+            <td><img src="{% static 'ratesmash/images/FO.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'PI' %}
+            <td><img src="{% static 'ratesmash/images/PI.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'LU' %}
+            <td><img src="{% static 'ratesmash/images/LU.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'NE' %}
+            <td><img src="{% static 'ratesmash/images/NE.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'CF' %}
+            <td><img src="{% static 'ratesmash/images/CF.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% else %}
+            <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ room.owner.main }}"/></td>     
+            {% endif %}
         </tr>
         <tr>
             <th>レート</th>
@@ -111,7 +136,31 @@
         </tr>
         <tr>
             <th>キャラクター</th>
-            <td>{{ room.owner.main }}</td>
+            {% if  room.owner.main == 'MA' %}
+            <td><img src="{% static 'ratesmash/images/MA.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif  room.owner.main == 'DK' %}
+            <td><img src="{% static 'ratesmash/images/DK.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'LI' %}
+            <td><img src="{% static 'ratesmash/images/LI.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'SA' %}
+            <td><img src="{% static 'ratesmash/images/SA.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'YO' %}
+            <td><img src="{% static 'ratesmash/images/YO.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'KI' %}
+            <td><img src="{% static 'ratesmash/images/KI.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'FO' %}
+            <td><img src="{% static 'ratesmash/images/FO.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'PI' %}
+            <td><img src="{% static 'ratesmash/images/PI.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'LU' %}
+            <td><img src="{% static 'ratesmash/images/LU.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'NE' %}
+            <td><img src="{% static 'ratesmash/images/NE.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% elif room.owner.main == 'CF' %}
+            <td><img src="{% static 'ratesmash/images/CF.png' %}" alt="{{ room.owner.main }}"/></td>
+            {% else %}
+            <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ room.owner.main }}"/></td>     
+            {% endif %}
         </tr>
         <tr>
             <th>レート</th>
@@ -141,7 +190,31 @@
         </tr>
         <tr>
             <th>キャラクター</th>
-            <td>{{ room.participant.main }}</td>
+            {% if  room.participant.main == 'MA' %}
+            <td><img src="{% static 'ratesmash/images/MA.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif  room.participant.main == 'DK' %}
+            <td><img src="{% static 'ratesmash/images/DK.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'LI' %}
+            <td><img src="{% static 'ratesmash/images/LI.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'SA' %}
+            <td><img src="{% static 'ratesmash/images/SA.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'YO' %}
+            <td><img src="{% static 'ratesmash/images/YO.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'KI' %}
+            <td><img src="{% static 'ratesmash/images/KI.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'FO' %}
+            <td><img src="{% static 'ratesmash/images/FO.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'PI' %}
+            <td><img src="{% static 'ratesmash/images/PI.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'LU' %}
+            <td><img src="{% static 'ratesmash/images/LU.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'NE' %}
+            <td><img src="{% static 'ratesmash/images/NE.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'CF' %}
+            <td><img src="{% static 'ratesmash/images/CF.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% else %}
+            <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ room.participant.main }}"/></td>     
+            {% endif %}
         </tr>
         <tr>
             <th>レート</th>
@@ -169,7 +242,8 @@
     <hr>
     
     <footer>
-        <p>Copyright</p>
+        <p>Respected 大乱闘スマッシュブラザーズ<br>Copyright © 2018 beginnerpython rights reserved.</p>
     </footer>
+    
 </body>
 </html>

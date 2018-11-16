@@ -30,18 +30,21 @@
     
     <hr>
     
-    <div>
-        <table class="player-detail">
+    <div class="player-list">
+        <table>
             <tr>
+                <th></th>
                 <th>ハンドルネーム</th>
                 <th>キャラクター</th>
                 <th>レート</th>
             </tr>
+        {% for player in players %}
             <tr>
-                <td>{{ player.user.first_name }}</td>
-                {% if player.main == 'MA' %}
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'ratesmash:player_detail' player.id %}">{{ player.user.first_name }}</a></td>
+                {% if  player.main == 'MA' %}
                 <td><img src="{% static 'ratesmash/images/MA.png' %}" alt="{{ player.main }}"/></td>
-                {% elif player.main == 'DK' %}
+                {% elif  player.main == 'DK' %}
                 <td><img src="{% static 'ratesmash/images/DK.png' %}" alt="{{ player.main }}"/></td>
                 {% elif player.main == 'LI' %}
                 <td><img src="{% static 'ratesmash/images/LI.png' %}" alt="{{ player.main }}"/></td>
@@ -66,31 +69,7 @@
                 {% endif %}
                 <td>{{ player.rate }}</td>
             </tr>
-        </table>
-    </div>
-    
-    <div>
-        <p>ゲームレコード</p>
-        <table class="result-list">
-            <tr>
-                <th>対戦結果</th>
-                <th>対戦相手</th>
-                <th>キャラクター</th>
-                <th>日付</th>
-            </tr>
-            {% for result in results %}
-            <tr>
-                <td class="{{ result.winloss }}">
-                {% if result.winloss == True %}win{% endif %}
-                {% if result.winloss == False %}loss{% endif %}
-                </td>
-                <td>
-                    <a href="{% url 'ratesmash:player_detail' result.player2.id %}">{{ result.player2.user.first_name }}</a>
-                </td>
-                <td>{{ result.player2.main }}</td>
-                <td>{{ result.room.pub_date|date:'F/j/Y' }}</td>
-            </tr>
-            {% endfor %}            
+        {% endfor %}
         </table>
     </div>
     

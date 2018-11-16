@@ -176,7 +176,7 @@ def send_result(request, room_id):
     return render(request, 'ratesmash/send_result.html', context) 
 
 def all_players(request):
-    players = Player.objects.all().order_by('rate').reverse()
+    players = Player.objects.all()
     context = {
             'title':'rate smash',
             'subtitle':'all players',
@@ -194,6 +194,15 @@ def player_detail(request, player_id):
             'results':results,
             }
     return render(request, 'ratesmash/player_detail.html', context)
+
+def ranking(request):
+    players = Player.objects.all().order_by('rate').reverse()
+    context = {
+            'title':'rate smash',
+            'subtitle':'ranking',
+            'players':players,
+            }
+    return render(request, 'ratesmash/ranking.html', context)
 
 def howtoplay(request):
     context = dict()

@@ -52,6 +52,15 @@ header p {
     transition: .4s;
     }
     
+footer {
+    text-align: center;
+}
+    
+img {
+   max-width: 150px;
+   height: auto;
+}
+    
 
 /* テーブルデザイン　*/
 .room-list {

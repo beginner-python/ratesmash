@@ -14,4 +14,5 @@ urlpatterns = [
     path('player_detail/<int:player_id>/', views.player_detail, name='player_detail'),
     path('howtoplay/', views.howtoplay, name='howtoplay'),
     path('error_message/', views.error_message, name='error_message'),
+    path('ranking/', views.ranking, name='ranking'),
 ]
