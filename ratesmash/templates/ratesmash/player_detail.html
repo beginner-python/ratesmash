@@ -87,7 +87,31 @@
                 <td>
                     <a href="{% url 'ratesmash:player_detail' result.player2.id %}">{{ result.player2.user.first_name }}</a>
                 </td>
-                <td>{{ result.player2.main }}</td>
+                {% if  result.player2.main == 'MA' %}
+                <td><img src="{% static 'ratesmash/images/MA.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif  result.player2.main == 'DK' %}
+                <td><img src="{% static 'ratesmash/images/DK.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'LI' %}
+                <td><img src="{% static 'ratesmash/images/LI.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'SA' %}
+                <td><img src="{% static 'ratesmash/images/SA.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'YO' %}
+                <td><img src="{% static 'ratesmash/images/YO.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'KI' %}
+                <td><img src="{% static 'ratesmash/images/KI.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'FO' %}
+                <td><img src="{% static 'ratesmash/images/FO.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'PI' %}
+                <td><img src="{% static 'ratesmash/images/PI.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'LU' %}
+                <td><img src="{% static 'ratesmash/images/LU.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'NE' %}
+                <td><img src="{% static 'ratesmash/images/NE.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% elif result.player2.main == 'CF' %}
+                <td><img src="{% static 'ratesmash/images/CF.png' %}" alt="{{ result.player2.main }}"/></td>
+                {% else %}
+                <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ result.player2.main }}"/></td>     
+                {% endif %}
                 <td>{{ result.room.pub_date|date:'F/j/Y' }}</td>
             </tr>
             {% endfor %}            
