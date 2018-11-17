@@ -50,6 +50,7 @@ class Room(models.Model):
             ('tetsu', 'tetsu_server'),
             ('kaillera', 'kaillera_server'),
             ('exo', 'exo_server'),
+            ('heijokyo', 'heijokyo'),
             )
     server = models.CharField(max_length=10, choices=SERVER_LIST)
     CF_LIST = (

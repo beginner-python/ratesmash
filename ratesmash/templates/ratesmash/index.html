@@ -6,90 +6,90 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'ratesmash/style.css' %}" />
 </head>
-<body>
-
-    <header>
-        <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
-        <p>
-        <strong>beginner python</strong> による勉強用サイトです！<br>
-        初めての方はhow to playを一読してからご利用ください！
-        </p>
-        <h2>{{ subtitle }}</h2>
-    </header>
-    
-    <hr>
-    
-    <nav class="menu">
-        <ul class="menu-bar">
-            <li class="menu-item"><a href="{% url 'ratesmash:create_room' %}">部屋をつくる</a></li>
-            <li class="menu-item"><a href="{% url 'ratesmash:all_players' %}">プレイヤー一覧</a></li>
-            <li class="menu-item"><a href="{% url 'ratesmash:ranking' %}">ランキング</a></li>
-            <li class="menu-item"><a href="{% url 'ratesmash:howtoplay' %}">ヘルプ</a></li>
-        </ul>
-    </nav>
-    
-    <hr>
-    
-    <div>
-        <table class="room-list">
-            <tr class="waiting">
-                <th>部屋番号</th>
-                <th>部屋主</th>
-                <th>参加者</th>
-                <th>状態</th>
-            </tr>
-        {% for room in waiting_room %}
-        {% if room.mode == False %}
-            <tr>
-                <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                <td>{{ room.owner.user.first_name }}</td>
-                <td></td>
-                <td>待機中</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                <td>?</td>
-                <td></td>
-                <td>待機中</td>
-            </tr>
-        {% endif %}
-        {% endfor %}
-        {% for room in active_room %}
-            <tr class="active">
-                <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                <td>{{ room.owner.user.first_name }}</td>
-                <td>{{ room.participant.user.first_name }}</td>
-                <td>試合中</td>
-            </tr>
-        {% endfor %}
-        {% for room in processing_room %}
-            <tr class="processing">
-                <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                <td>{{ room.owner.user.first_name }}</td>
-                <td>{{ room.participant.user.first_name }}</td>
-                <td>処理中</td>
-            </tr>
-        {% endfor %}
-        {% for room in finished_room %}
-            <tr class="finished">
-                <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                <td>{{ room.owner.user.first_name }}</td>
-                <td>{{ room.participant.user.first_name }}</td>
-                <td>対戦終了</td>
-            </tr>
-        {% endfor %}
-        </table>
-    </div>
-    
-    <p><a href="#">一番上へ</a></p>
-    <p><a href="{% url 'ratesmash:index' %}">Homeへ</a></p>
-    
-    <hr>
-    
-    <footer>
-        <p>Respected 大乱闘スマッシュブラザーズ<br>Copyright © 2018 beginnerpython rights reserved.</p>
-    </footer>
-    
+<body class="index">
+    <div class="index-body">
+        <header>
+            <h1><a href="{% url 'ratesmash:index' %}">{{ title }}</a></h1>
+            <p>
+            <strong>beginner python</strong> による勉強用サイトです！<br>
+            初めての方はhow to playを一読してからご利用ください！
+            </p>
+            <h2>{{ subtitle }}</h2>
+        </header>
+        
+        <hr>
+        
+        <nav class="menu">
+            <ul class="menu-bar">
+                <li class="menu-item"><a href="{% url 'ratesmash:create_room' %}">部屋をつくる</a></li>
+                <li class="menu-item"><a href="{% url 'ratesmash:all_players' %}">プレイヤー一覧</a></li>
+                <li class="menu-item"><a href="{% url 'ratesmash:ranking' %}">ランキング</a></li>
+                <li class="menu-item"><a href="{% url 'ratesmash:howtoplay' %}">ヘルプ</a></li>
+            </ul>
+        </nav>
+        
+        <hr>
+        
+        <div>
+            <table class="room-list">
+                <tr class="waiting">
+                    <th>部屋番号</th>
+                    <th>部屋主</th>
+                    <th>参加者</th>
+                    <th>状態</th>
+                </tr>
+            {% for room in waiting_room %}
+            {% if room.mode == False %}
+                <tr>
+                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td>{{ room.owner.user.first_name }}</td>
+                    <td></td>
+                    <td>待機中</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td>?</td>
+                    <td></td>
+                    <td>待機中</td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+            {% for room in active_room %}
+                <tr class="active">
+                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td>{{ room.owner.user.first_name }}</td>
+                    <td>{{ room.participant.user.first_name }}</td>
+                    <td>試合中</td>
+                </tr>
+            {% endfor %}
+            {% for room in processing_room %}
+                <tr class="processing">
+                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td>{{ room.owner.user.first_name }}</td>
+                    <td>{{ room.participant.user.first_name }}</td>
+                    <td>処理中</td>
+                </tr>
+            {% endfor %}
+            {% for room in finished_room %}
+                <tr class="finished">
+                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                    <td>{{ room.owner.user.first_name }}</td>
+                    <td>{{ room.participant.user.first_name }}</td>
+                    <td>対戦終了</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        
+        <p><a href="#">一番上へ</a></p>
+        <p><a href="{% url 'ratesmash:index' %}">Homeへ</a></p>
+        
+        <hr>
+        
+        <footer>
+            <p>Respected 大乱闘スマッシュブラザーズ<br>Copyright © 2018 beginnerpython rights reserved.</p>
+        </footer>
+    </div>        
 </body>
 </html>

@@ -6,6 +6,7 @@ class RoomForm(forms.Form):
             ('tetsu', 'tetsu_server'),
             ('kaillera', 'kaillera_server'),
             ('exo', 'exo_server'),
+            ('heijokyo', 'heijokyo'),
             )
     server = forms.ChoiceField(choices=SERVER_LIST)
     CF_LIST = (
