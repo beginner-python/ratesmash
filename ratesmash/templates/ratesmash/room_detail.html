@@ -106,7 +106,7 @@
         </tr>
         <tr>
             <th>キャラクター</th>
-            <td>?</td>
+            <td><img src="{% static 'ratesmash/images/SF.png' %}" alt="?" /></td>
         </tr>
         <tr>
             <th>レート</th>
@@ -212,8 +212,10 @@
             <td><img src="{% static 'ratesmash/images/NE.png' %}" alt="{{ room.participant.main }}"/></td>
             {% elif room.participant.main == 'CF' %}
             <td><img src="{% static 'ratesmash/images/CF.png' %}" alt="{{ room.participant.main }}"/></td>
+            {% elif room.participant.main == 'PU'  %}
+            <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ room.participant.main }}"/></td>
             {% else %}
-            <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ room.participant.main }}"/></td>     
+            <td></td>   
             {% endif %}
         </tr>
         <tr>
