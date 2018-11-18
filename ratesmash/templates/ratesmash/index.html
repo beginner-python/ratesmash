@@ -30,56 +30,69 @@
         
         <hr>
         
-        <div>
-            <table class="room-list">
-                <tr class="waiting">
-                    <th>部屋番号</th>
-                    <th>部屋主</th>
-                    <th>参加者</th>
-                    <th>状態</th>
-                </tr>
-            {% for room in waiting_room %}
-            {% if room.mode == False %}
-                <tr>
-                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                    <td>{{ room.owner.user.first_name }}</td>
-                    <td></td>
-                    <td>待機中</td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                    <td>?</td>
-                    <td></td>
-                    <td>待機中</td>
-                </tr>
-            {% endif %}
-            {% endfor %}
-            {% for room in active_room %}
-                <tr class="active">
-                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                    <td>{{ room.owner.user.first_name }}</td>
-                    <td>{{ room.participant.user.first_name }}</td>
-                    <td>試合中</td>
-                </tr>
-            {% endfor %}
-            {% for room in processing_room %}
-                <tr class="processing">
-                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                    <td>{{ room.owner.user.first_name }}</td>
-                    <td>{{ room.participant.user.first_name }}</td>
-                    <td>処理中</td>
-                </tr>
-            {% endfor %}
-            {% for room in finished_room %}
-                <tr class="finished">
-                    <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
-                    <td>{{ room.owner.user.first_name }}</td>
-                    <td>{{ room.participant.user.first_name }}</td>
-                    <td>対戦終了</td>
-                </tr>
-            {% endfor %}
-            </table>
+        <div class="main-content">
+        
+            <div class="board">
+                <p>更新報告</p>
+                <hr>
+                <p><strong>フェスやります。</strong></p>
+                <p>11/18 α1.4 対戦時のレート保持</p>
+                <p>11/16 α1.3 サイトデザインの変更</p>
+                <p>11/15 α1.2 匿名モードの追加</p>
+            </div>
+        
+            <div>
+                <table class="room-list">
+                    <tr class="waiting">
+                        <th>部屋番号</th>
+                        <th>部屋主</th>
+                        <th>参加者</th>
+                        <th>状態</th>
+                    </tr>
+                {% for room in waiting_room %}
+                {% if room.mode == False %}
+                    <tr>
+                        <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                        <td>{{ room.owner.user.first_name }}</td>
+                        <td></td>
+                        <td>待機中</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                        <td>?</td>
+                        <td></td>
+                        <td>待機中</td>
+                    </tr>
+                {% endif %}
+                {% endfor %}
+                {% for room in active_room %}
+                    <tr class="active">
+                        <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                        <td>{{ room.owner.user.first_name }}</td>
+                        <td>{{ room.participant.user.first_name }}</td>
+                        <td>試合中</td>
+                    </tr>
+                {% endfor %}
+                {% for room in processing_room %}
+                    <tr class="processing">
+                        <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                        <td>{{ room.owner.user.first_name }}</td>
+                        <td>{{ room.participant.user.first_name }}</td>
+                        <td>処理中</td>
+                    </tr>
+                {% endfor %}
+                {% for room in finished_room %}
+                    <tr class="finished">
+                        <td><a href="{% url 'ratesmash:room_detail' room.id %}">{{ room }}</a></td>
+                        <td>{{ room.owner.user.first_name }}</td>
+                        <td>{{ room.participant.user.first_name }}</td>
+                        <td>対戦終了</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+            
         </div>
         
         <p><a href="#">一番上へ</a></p>

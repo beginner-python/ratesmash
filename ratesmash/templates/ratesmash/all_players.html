@@ -31,45 +31,56 @@
         
         <hr>
         
-        <div class="player-list">
-            <table>
-                <tr>
-                    <th>ハンドルネーム</th>
-                    <th>キャラクター</th>
-                    <th>レート</th>
-                </tr>
-            {% for player in players %}
-                <tr>
-                    <td><a href="{% url 'ratesmash:player_detail' player.id %}">{{ player.user.first_name }}</a></td>
-                    {% if  player.main == 'MA' %}
-                    <td><img src="{% static 'ratesmash/images/MA.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif  player.main == 'DK' %}
-                    <td><img src="{% static 'ratesmash/images/DK.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'LI' %}
-                    <td><img src="{% static 'ratesmash/images/LI.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'SA' %}
-                    <td><img src="{% static 'ratesmash/images/SA.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'YO' %}
-                    <td><img src="{% static 'ratesmash/images/YO.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'KI' %}
-                    <td><img src="{% static 'ratesmash/images/KI.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'FO' %}
-                    <td><img src="{% static 'ratesmash/images/FO.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'PI' %}
-                    <td><img src="{% static 'ratesmash/images/PI.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'LU' %}
-                    <td><img src="{% static 'ratesmash/images/LU.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'NE' %}
-                    <td><img src="{% static 'ratesmash/images/NE.png' %}" alt="{{ player.main }}"/></td>
-                    {% elif player.main == 'CF' %}
-                    <td><img src="{% static 'ratesmash/images/CF.png' %}" alt="{{ player.main }}"/></td>
-                    {% else %}
-                    <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ player.main }}"/></td>     
-                    {% endif %}
-                    <td>{{ player.rate }}</td>
-                </tr>
-            {% endfor %}
-            </table>
+        <div class="main-content">
+        
+            <div class="board">
+                <p>プレイヤー一覧</p>
+                <hr>
+                <p>参加者はここに載ってますよ。</p>
+            </div>
+    
+            
+            <div class="player-list">
+                <table>
+                    <tr>
+                        <th>ハンドルネーム</th>
+                        <th>キャラクター</th>
+                        <th>レート</th>
+                    </tr>
+                {% for player in players %}
+                    <tr>
+                        <td><a href="{% url 'ratesmash:player_detail' player.id %}">{{ player.user.first_name }}</a></td>
+                        {% if  player.main == 'MA' %}
+                        <td><img src="{% static 'ratesmash/images/MA.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif  player.main == 'DK' %}
+                        <td><img src="{% static 'ratesmash/images/DK.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'LI' %}
+                        <td><img src="{% static 'ratesmash/images/LI.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'SA' %}
+                        <td><img src="{% static 'ratesmash/images/SA.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'YO' %}
+                        <td><img src="{% static 'ratesmash/images/YO.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'KI' %}
+                        <td><img src="{% static 'ratesmash/images/KI.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'FO' %}
+                        <td><img src="{% static 'ratesmash/images/FO.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'PI' %}
+                        <td><img src="{% static 'ratesmash/images/PI.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'LU' %}
+                        <td><img src="{% static 'ratesmash/images/LU.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'NE' %}
+                        <td><img src="{% static 'ratesmash/images/NE.png' %}" alt="{{ player.main }}"/></td>
+                        {% elif player.main == 'CF' %}
+                        <td><img src="{% static 'ratesmash/images/CF.png' %}" alt="{{ player.main }}"/></td>
+                        {% else %}
+                        <td><img src="{% static 'ratesmash/images/PU.png' %}" alt="{{ player.main }}"/></td>     
+                        {% endif %}
+                        <td>{{ player.rate }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+            
         </div>
         
         <p><a href="#">一番上へ</a></p>
