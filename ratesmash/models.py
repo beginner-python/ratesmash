@@ -59,6 +59,9 @@ class Room(models.Model):
             )
     cf = models.CharField(max_length=1, choices=CF_LIST)
     mode = models.BooleanField()
+    rate_o = models.IntegerField(blank=True, null=True)
+    rate_p = models.IntegerField(blank=True, null=True)
+    
     def __str__(self):
         return str(self.id)
     

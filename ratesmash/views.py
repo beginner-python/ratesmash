@@ -36,6 +36,7 @@ def create_room(request):
                     server=request.POST['server'],
                     cf=request.POST['cf'],
                     mode=request.POST['mode'],
+                    rate_o = player.rate
                     )
             room.save()
             player.playable = False
@@ -102,6 +103,7 @@ def join_room(request, room_id):
     else:
         room.participant = player
         room.state = 'd'
+        room.rate_p = player.rate
         room.save()
         player.playable = False
         player.save()
@@ -237,9 +239,9 @@ def process_rate(room_id):
         else:
             rate1 = player1.rate
             rate2 = player2.rate
+            room.state = 'f'
+            room.save()
             if abs(rate1 - rate2) >= 400:
-                room.state = 'f'
-                room.save()
                 if rate1 > rate2:
                     if winloss1 == True:
                         player1.playable = True
@@ -267,8 +269,6 @@ def process_rate(room_id):
                         player2.playable = True
                         player2.save()
             else:
-                room.state = 'f'
-                room.save()
                 if winloss1 == True:
                     player1.rate += int(16 + (rate2 - rate1) * 0.04)
                     player1.playable = True
